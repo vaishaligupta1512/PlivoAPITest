@@ -26,3 +26,7 @@ After checking out the code, import it as existing maven project to any IDE.
 After the project has been imported successfully, the test cases can be run in the following ways:
 1. From terminal: cd <project directory> and then execute command "mvn clean test".
 2. From IDE: Right-click on the project and select Run As -> Maven Build.. -> Enter Goals as "clean test".
+
+## Test Reports
+After the execution of the TestSuite, ExtentReport is generated under the TestReport folder.
+A sample test report generated can be found here:  /plivoAPITest/TestReport/PlivoAPITestReport.html

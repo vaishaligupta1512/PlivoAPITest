@@ -17,7 +17,7 @@ public class MessageAPITest extends APITestBase {
 	String senderNumber, receiverNumber, msgUUID, msgRate, initialCashCredit;
 	MessageAPIRequests msgRequest = new MessageAPIRequests();
 
-	@Test
+	@Test(description="Get the initial Cash Credit in Account.")
 	public void getInitialCashCredit() {
 		res = msgRequest.getAccountDetails(authID, authToken);
 		js = APIUtils.responseToJsonPath(res);
@@ -27,7 +27,7 @@ public class MessageAPITest extends APITestBase {
 		log.info("Initial cash credits: " + initialCashCredit);
 	}
 
-	@Test
+	@Test(description="Get two numbers to send text message.")
 	public void getNumbers() {
 		res = msgRequest.getAccountNumbers(authID, authToken);
 		js = APIUtils.responseToJsonPath(res);
@@ -38,7 +38,7 @@ public class MessageAPITest extends APITestBase {
 		log.info("senderNumber: " + senderNumber + " receiverNumber: " + receiverNumber);
 	}
 
-	@Test(dependsOnMethods = { "getNumbers" })
+	@Test(dependsOnMethods = { "getNumbers" }, description = "Text message sent from sender to receiver.")
 	public void sendSMS() {
 		String msgText = "Hi, text from Plivo";
 		res = msgRequest.sendTextMessage(authID, authToken, senderNumber, receiverNumber, msgText);
@@ -56,7 +56,7 @@ public class MessageAPITest extends APITestBase {
 		log.info("Message sending charges: " + msgRate);
 	}
 
-	@Test(dependsOnMethods = { "sendSMS" })
+	@Test(dependsOnMethods = { "sendSMS" }, description = "Check text message charges for particular country.")
 	public void getMsgPricing() {
 		res = msgRequest.getCountryPricing(authID, authToken, "US");
 		js = APIUtils.responseToJsonPath(res);
@@ -66,7 +66,7 @@ public class MessageAPITest extends APITestBase {
 		Assert.assertEquals(msgRate, priceRate, "Mismatch in pricing and message charges!!");
 	}
 
-	@Test(dependsOnMethods = { "getInitialCashCredit", "getMsgPricing" })
+	@Test(dependsOnMethods = { "getInitialCashCredit", "getMsgPricing" }, description="Check that correct amount is deducted from Account.")
 	public void validateCashCreditDeduction() throws ParseException {
 		res = msgRequest.getAccountDetails(authID, authToken);
 		js = APIUtils.responseToJsonPath(res);
