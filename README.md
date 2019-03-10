@@ -6,9 +6,9 @@ Test Automation framework for Plivo REST APIs.
 ### Tools and Frameworks used
 
 This suite uses the following tools and framework:
-1. Rest-Assured
+1. REST Assured
 2. Maven
-3. TestNg
+3. TestNG
 4. Log4j
 5. ExtentReport-3
 
