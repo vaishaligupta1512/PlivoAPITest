@@ -8,8 +8,8 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManager {
     private static ExtentReports extent;
     private static String reportFileName = "PlivoAPITestReport.html";
-    private static String filePath = System.getProperty("user.dir")+ "\\TestReport";
-    private static String reportFile = filePath + "\\" + reportFileName;
+    private static String filePath = System.getProperty("user.dir")+ System.getProperty("file.separator") + "TestReport";
+    private static String reportFile = filePath + System.getProperty("file.separator") + reportFileName;
 
     public static ExtentReports getInstance() {
         if (extent == null)
