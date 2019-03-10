@@ -10,7 +10,7 @@ This suite uses the following tools and framework:
 2. Maven
 3. TestNg
 4. Log4j
-5. ExtentReport
+5. ExtentReport-3
 
 ### Setting up the Framework
 
